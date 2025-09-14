@@ -38,6 +38,7 @@ class OmikujiApp {
         this.result = document.getElementById('result');
         this.fortuneLevel = document.querySelector('.fortune-level');
         this.fortuneMessage = document.querySelector('.fortune-message');
+        this.isDrawing = false;
 
         this.init();
     }
@@ -48,6 +49,11 @@ class OmikujiApp {
     }
 
     drawFortune() {
+        if (this.isDrawing) {
+            return;
+        }
+
+        this.isDrawing = true;
         this.drawButton.style.pointerEvents = 'none';
         this.drawButton.textContent = 'おみくじを引いています...';
 
@@ -70,6 +76,7 @@ class OmikujiApp {
 
         this.drawButton.style.pointerEvents = 'auto';
         this.drawButton.textContent = 'おみくじを引く';
+        this.isDrawing = false;
     }
 
     reset() {
@@ -80,6 +87,7 @@ class OmikujiApp {
         this.fortuneLevel.className = 'fortune-level';
         this.fortuneLevel.textContent = '';
         this.fortuneMessage.textContent = '';
+        this.isDrawing = false;
     }
 }
 

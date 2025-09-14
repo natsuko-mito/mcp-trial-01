@@ -155,12 +155,18 @@ test.describe('Omikuji App', () => {
   test('should handle rapid clicks gracefully', async ({ page }) => {
     const drawButton = page.locator('#drawButton');
 
-    // Click multiple times rapidly
-    await drawButton.click();
-    await drawButton.click();
+    // Click once, then try to click rapidly while disabled
     await drawButton.click();
 
-    // Should still show loading state
+    // Should show loading state
+    await expect(drawButton).toHaveText('おみくじを引いています...');
+
+    // Try to click multiple times during loading (should be ignored)
+    // Use force: true to bypass actionability checks since the button is disabled
+    await drawButton.click({ force: true });
+    await drawButton.click({ force: true });
+
+    // Should still show loading state (not affected by rapid clicks)
     await expect(drawButton).toHaveText('おみくじを引いています...');
 
     // Wait for completion
