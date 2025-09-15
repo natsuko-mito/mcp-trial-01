@@ -3,6 +3,8 @@
 ## 開発について
 
 このプロジェクトは、2025年09月のSoftware Design特集記事「AI開発が加速 MCPでどう変わる？」をtrialしたものです。
+https://github.com/minorun365/software-design-202509
+
 MCP（Model Context Protocol）を活用した開発体験の実験として取り組んでおり、開発およびテストにはClaude CodeのAIアシスタント機能を利用しています。
 
 ## 概要
